@@ -16,5 +16,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+<<<<<<< Updated upstream
+=======
+    alignItems: 'center',
+  },
+  dataText: {
+    fontSize: 25,
+    marginBottom: 10,
+>>>>>>> Stashed changes
   },
 });
