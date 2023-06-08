@@ -1,2 +1,4 @@
 import Home from './Home.js';
-export{Home};
+import LeituraQrcode from './LeituraQrcode.js';
+
+export{Home, LeituraQrcode};
