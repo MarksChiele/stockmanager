@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button,TouchableOpacity } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-
-export default function LeituraQrcode() {
+import { css } from '../assets/Css/Css';
+export default function LeituraQrcode(props) {
+  console.log(props);
   const [hasPermission, setHasPermission] = useState(null);
   const [scanning, setScanning] = useState(false);
   const [scannedData, setScannedData] = useState(null);
@@ -39,25 +40,40 @@ export default function LeituraQrcode() {
           onBarCodeScanned={handleBarCodeScanned}
           style={StyleSheet.absoluteFillObject}
         />
+        
       ) : (
+        
         <View style={styles.dataContainer}>
-          <Text style={styles.dataText}>{scannedData}</Text>
+                          <TouchableOpacity style={css.buttonProsseguir} onPress={()=>props.navigation.navigate ('Operacao')}>
+                          <Text style={css.titleAdd}>PROSSEGUIR</Text>
+                          </TouchableOpacity>
+
+          <Text style={styles.dataText}>O ID do produto lido é: {scannedData}</Text>
           <Button title="Escanear QR Code" onPress={startScan} />
-        </View>
+        </View>// scannedData e a variavel do conteudo do QRCode. Esta deve ser enviada junto na rota quando chamada a API
       )}
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
   dataContainer: {
+    flex:1,
+    width:"100%",
     justifyContent: 'center',
     alignItems: 'center',
+
+    margin:2,
+        flexDirection:'column',
+        backgroundColor:'#fff',
+        alignItens:'center',
+       
   },
   dataText: {
     fontSize: 20,

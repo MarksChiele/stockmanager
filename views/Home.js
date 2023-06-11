@@ -6,6 +6,8 @@ export default function Home(props) {
     return (
      
     <View style={css.container}>
+
+
     <TouchableOpacity style={css.buttonAdd} onPress={()=>props.navigation.navigate ('LeituraQrcode',{
       OpId:1
     })}>

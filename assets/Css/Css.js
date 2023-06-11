@@ -21,6 +21,17 @@ titleAdd:{
     
 
 },
+buttonProsseguir:{
+    alignItems:'center',
+     backgroundColor:'green',
+     borderRadius:8,
+     padding:15,
+     justifyContent:'center',
+     width:"40%",
+     height:"10%",
+         top:"40%",
+ },
+
 
 
 buttonAdd:{
@@ -42,12 +53,40 @@ buttonRemove:{
     width:"35%",
     height:"10%",
     top:"150%",
-
-    
-    
+},
+containerOperacao:{
+    display:'flex',
+    width:"100%",
+    margin:5,
+    flexDirection:'column',
+    backgroundColor:'#fff',
+    justifyContent:'flex-start',
 },
 
+botaoAtualizar:{
+    alignItems:'center',
+    backgroundColor:'green', 
+    borderRadius:5,
+    justifyContent:'center',
+    width:"80%",
+    height:"15%",
+    top:"200%",
+    alignContent:'flex-start',
 
+},
+
+textInputQuantidade:{
+    height:40,
+    alignItems:'center',
+    backgroundColor:'grey',
+    width:"80%",
+    height:"8%",
+    top:"120%",
+
+
+
+
+},
 
 
 });
