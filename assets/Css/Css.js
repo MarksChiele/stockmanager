@@ -54,9 +54,11 @@ buttonRemove:{
     height:"10%",
     top:"150%",
 },
+
+
 containerOperacao:{
-    display:'flex',
     width:"100%",
+    
     margin:5,
     flexDirection:'column',
     backgroundColor:'#fff',

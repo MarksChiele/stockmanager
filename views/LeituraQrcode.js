@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Button,TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { css } from '../assets/Css/Css';
+import { api } from '../services/api';
+
 export default function LeituraQrcode(props) {
-  console.log(props);
+  //console.log(props);
   const [hasPermission, setHasPermission] = useState(null);
   const [scanning, setScanning] = useState(false);
   const [scannedData, setScannedData] = useState(null);
+  const [productData, setProductData] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -15,10 +18,18 @@ export default function LeituraQrcode(props) {
     })();
   }, []);
 
-  const handleBarCodeScanned = ({ data }) => {
+  const handleBarCodeScanned = async ({ data }) => {
     setScanning(false);
     setScannedData(data);
+
+    try {
+     const reponse = await api.get("produto/" + data);
+      setProductData(reponse.data)
+    } catch {
+      console.log("Erro ao buscar o produto.")
+    }
   };
+
 
   const startScan = () => {
     setScanning(true);
@@ -40,15 +51,16 @@ export default function LeituraQrcode(props) {
           onBarCodeScanned={handleBarCodeScanned}
           style={StyleSheet.absoluteFillObject}
         />
-        
+
       ) : (
-        
+
         <View style={styles.dataContainer}>
-                          <TouchableOpacity style={css.buttonProsseguir} onPress={()=>props.navigation.navigate ('Operacao')}>
-                          <Text style={css.titleAdd}>PROSSEGUIR</Text>
-                          </TouchableOpacity>
+          <TouchableOpacity style={css.buttonProsseguir} onPress={() => props.navigation.navigate('Operacao')}>
+            <Text style={css.titleAdd}>PROSSEGUIR</Text>
+          </TouchableOpacity>
 
           <Text style={styles.dataText}>O ID do produto lido é: {scannedData}</Text>
+          <Text style={styles.dataText}>Nome: {productData.descricao}</Text>
           <Button title="Escanear QR Code" onPress={startScan} />
         </View>// scannedData e a variavel do conteudo do QRCode. Esta deve ser enviada junto na rota quando chamada a API
       )}
@@ -64,16 +76,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   dataContainer: {
-    flex:1,
-    width:"100%",
+    flex: 1,
+    width: "100%",
     justifyContent: 'center',
     alignItems: 'center',
 
-    margin:2,
-        flexDirection:'column',
-        backgroundColor:'#fff',
-        alignItens:'center',
-       
+    margin: 2,
+    flexDirection: 'column',
+    backgroundColor: '#fff',
+    alignItens: 'center',
+
   },
   dataText: {
     fontSize: 20,

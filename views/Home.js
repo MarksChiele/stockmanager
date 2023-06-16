@@ -9,12 +9,12 @@ export default function Home(props) {
 
 
     <TouchableOpacity style={css.buttonAdd} onPress={()=>props.navigation.navigate ('LeituraQrcode',{
-      OpId:1
+      Opercao:'soma',
     })}>
      <Text style={css.titleAdd}>Adicionar</Text>
       </TouchableOpacity>
       <TouchableOpacity style={css.buttonRemove} onPress={()=>props.navigation.navigate ('LeituraQrcode',{
-      OpId:2
+      Opercao:'subt',
     })}>
      <Text style={css.titleAdd}>Subtrair</Text>
       </TouchableOpacity>
