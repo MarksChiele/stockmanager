@@ -57,12 +57,13 @@ buttonRemove:{
 
 
 containerOperacao:{
-    width:"100%",
-    
+    width:"120%",
+    height:"30%",
     margin:5,
     flexDirection:'column',
-    backgroundColor:'#fff',
+    backgroundColor:'red',
     justifyContent:'flex-start',
+    top:"3%",
 },
 
 botaoAtualizar:{
@@ -82,7 +83,7 @@ textInputQuantidade:{
     alignItems:'center',
     backgroundColor:'grey',
     width:"80%",
-    height:"8%",
+    height:"10%",
     top:"120%",
 
 

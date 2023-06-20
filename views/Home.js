@@ -2,6 +2,7 @@ import { View,TouchableOpacity,Text } from 'react-native';
 import { css } from '../assets/Css/Css';
 
 export default function Home(props) {
+  
   console.log(props);
     return (
      

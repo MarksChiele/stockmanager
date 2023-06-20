@@ -31,6 +31,11 @@ export default function LeituraQrcode(props) {
   };
 
 
+  
+let getOp=props.route.params.Opercao;
+
+
+
   const startScan = () => {
     setScanning(true);
     setScannedData(null);
@@ -43,8 +48,9 @@ export default function LeituraQrcode(props) {
   if (hasPermission === false) {
     return <Text>Acesso à câmera negado.</Text>;
   }
-
+  console.log(getOp);
   return (
+   
     <View style={styles.container}>
       {scanning ? (
         <BarCodeScanner
@@ -55,12 +61,17 @@ export default function LeituraQrcode(props) {
       ) : (
 
         <View style={styles.dataContainer}>
-          <TouchableOpacity style={css.buttonProsseguir} onPress={() => props.navigation.navigate('Operacao')}>
+          <TouchableOpacity style={css.buttonProsseguir} onPress={() => props.navigation.navigate('Operacao',{
+            Op:getOp,
+            idItem:scannedData,
+
+          })}>
             <Text style={css.titleAdd}>PROSSEGUIR</Text>
           </TouchableOpacity>
-
+        
           <Text style={styles.dataText}>O ID do produto lido é: {scannedData}</Text>
           <Text style={styles.dataText}>Nome: {productData.descricao}</Text>
+      
           <Button title="Escanear QR Code" onPress={startScan} />
         </View>// scannedData e a variavel do conteudo do QRCode. Esta deve ser enviada junto na rota quando chamada a API
       )}

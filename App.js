@@ -15,7 +15,7 @@ export default function App() {
 
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
+      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="LeituraQrcode" component={LeituraQrcode} options={{ headerShown: false }} />
         <Stack.Screen name="Operacao" component={Operacao} options={{ headerShown: false }} />
 
