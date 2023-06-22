@@ -5,14 +5,25 @@ import React, { useState } from 'react';
 import { api } from '../services/api';
 
 export default function Operacao(props) {
-    console.log(props);
+    
     const [quantidade, setQuantidade] = useState('');
+    let getItem=props.route.params.idItem;
 
-    //acao do botão:
-    //const  reponse =   api.post("soma", {
-    //id: props.route.params.idItem,
-    //  quantidade: quantidade,
-    // });
+    function capturaOp() {
+        var operacao = props.route.params.Op;
+        var escrever;
+        switch (operacao) {
+            case "soma":
+                escrever = "Adicionando";
+                return <Text style={css.titleOpSoma}>{escrever}</Text>
+
+            case "subt":
+                escrever = "Subtraindo";
+                return <Text style={css.titleOpSub}>{escrever}</Text>
+
+        }
+    }
+
 
     async function realizaOperacao() {
         var operacao = props.route.params.Op; // variavel para direcionar a operacao correta na API soma ou subt
@@ -25,10 +36,14 @@ export default function Operacao(props) {
         });
 
         if (reponse.data.success) {
-            // joga pra tela de sucesso
-           // props.navigation.navigate ('Sucesso')
+            props.navigation.navigate('Final',{
+                item:getItem,// leva o id do item para montar a quantidade em estoque na tela de sucesso.
+
+            })
         }
     }
+
+
     return (
         <KeyboardAvoidingView
             enabled={Platform.OS === "ios"}
@@ -38,7 +53,11 @@ export default function Operacao(props) {
 
 
             <View style={css.containerTextPrincipal} >
+
                 <Text style={css.textPrincipal}>STOCK MANAGER</Text>
+            </View>
+            <View style={css.containerTextOp}>
+                <Text>{capturaOp()}</Text>
             </View>
             <TextInput style={css.textInputQuantidade}
                 value={quantidade}
@@ -48,7 +67,9 @@ export default function Operacao(props) {
                 placeholder="Informe aqui a quantidade!"
                 placeholderTextColor={'black'}
             />
-      
+            <View style={css.containerAoitem}>
+                <Text style={css.textAoitem}  >Ao item </Text>
+            </View>
 
             <TouchableOpacity style={css.botaoAtualizar} onPress={realizaOperacao} >
                 <Text style={css.titleAdd}>ATUALIZAR ESTOQUE</Text>

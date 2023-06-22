@@ -51,14 +51,23 @@ let getOp=props.route.params.Opercao;
   console.log(getOp);
   return (
    
+
+    
     <View style={styles.container}>
+      <View style={css.containerTextPrincipal} >
+            
+            <Text style={css.textPrincipal}>STOCK MANAGER</Text>
+        </View>
       {scanning ? (
         <BarCodeScanner
           onBarCodeScanned={handleBarCodeScanned}
           style={StyleSheet.absoluteFillObject}
+        
         />
+        
 
       ) : (
+        
 
         <View style={styles.dataContainer}>
           <TouchableOpacity style={css.buttonProsseguir} onPress={() => props.navigation.navigate('Operacao',{
@@ -66,6 +75,7 @@ let getOp=props.route.params.Opercao;
             idItem:scannedData,
 
           })}>
+            
             <Text style={css.titleAdd}>PROSSEGUIR</Text>
           </TouchableOpacity>
         
@@ -82,21 +92,21 @@ let getOp=props.route.params.Opercao;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 5,
+    width: "100%",
+    height: "100%",
+    flexDirection: 'column',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
   },
   dataContainer: {
-    flex: 1,
+    height: "80%",
     width: "100%",
     justifyContent: 'center',
     alignItems: 'center',
-
-    margin: 2,
-    flexDirection: 'column',
-    backgroundColor: '#fff',
-    alignItens: 'center',
-
+    margin:1,
+    backgroundColor: 'white',
+    top: 90,
   },
   dataText: {
     fontSize: 20,

@@ -2,14 +2,25 @@ import { StyleSheet } from "react-native";
 
 
 const css = StyleSheet.create({
+
     container: {
-        flex: 1,
         width: "100%",
-        margin: 5,
+        height: "100%",
         flexDirection: 'row',
-        backgroundColor: '#fff',
-        alignItens: 'center',
-        justifyContent: 'space-around',
+        backgroundColor: 'white',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+
+
+    },
+
+    imagemHomecontainer: {
+        width: "0%",
+        height: "55%",
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+
+
     },
 
     titleAdd: {
@@ -19,6 +30,31 @@ const css = StyleSheet.create({
         alignContent: 'center',
         textTransform: "uppercase",
     },
+   
+    buttonAdd: {
+        alignItems: 'center',
+        backgroundColor: 'green',
+        borderRadius: 8,
+        padding: 15,
+        justifyContent: 'center',
+        width: "45%",
+        height: "10%",
+        top: "60%",
+
+    },
+
+    buttonRemove: {
+        alignItems: 'center',
+        backgroundColor: 'red',
+        borderRadius: 8,
+        padding: 15,
+        justifyContent: 'center',
+        width: "45%",
+        height: "10%",
+        top: "60%",
+      
+    },
+
     buttonProsseguir: {
         alignItems: 'center',
         backgroundColor: 'green',
@@ -29,28 +65,7 @@ const css = StyleSheet.create({
         height: "10%",
         top: "40%",
     },
-
-    buttonAdd: {
-        alignItems: 'center',
-        backgroundColor: 'green',
-        borderRadius: 8,
-        padding: 15,
-        justifyContent: 'center',
-        width: "35%",
-        height: "10%",
-        top: "150%",
-    },
-
-    buttonRemove: {
-        alignItems: 'center',
-        backgroundColor: 'red',
-        padding: 15,
-        justifyContent: 'center',
-        width: "35%",
-        height: "10%",
-        top: "150%",
-        borderRadius: 8,
-    },
+    
 
     containerOperacao: {
         width: "100%",
@@ -79,7 +94,7 @@ const css = StyleSheet.create({
         width: "80%",
         height: 60,
         padding: 15,
-        textAlign:"center",
+        textAlign: "center",
     },
 
     textPrincipal: {
@@ -98,9 +113,52 @@ const css = StyleSheet.create({
         top: 0,
         backgroundColor: 'black',
         fontSize: 20,
-    
+
     },
 
+    titleOpSoma: {
+        color: "#008000",
+        fontSize: 40,
+        fontWeight: "bold",
+        alignContent: 'center',
+        textTransform: "uppercase",
+        top: -150,
+    },
+
+    titleOpSub: {
+        color: "#ff0000",
+        fontSize: 40,
+        fontWeight: "bold",
+        alignContent: 'center',
+        textTransform: "uppercase",
+        top: -150,
+    },
+    containerTextOp: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: "100%",
+        height: 50,
+        top: -150,
+        fontSize: 20,
+    },
+
+    containerAoitem: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: "100%",
+        height: 50,
+        top: 50,
+        fontSize: 20,
+
+    },
+
+    textAoitem: {
+        color: "#000000",
+        fontSize: 20,
+        fontWeight: "bold",
+        alignContent: 'center',
+        textTransform: "uppercase",
+    },
 
 });
 

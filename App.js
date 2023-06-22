@@ -5,6 +5,7 @@ import { Home } from './views';
 import { LeituraQrcode } from './views';
 import { Operacao } from './views';
 import axios from 'axios';
+import Final from './views/Final';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App() {
       <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="LeituraQrcode" component={LeituraQrcode} options={{ headerShown: false }} />
         <Stack.Screen name="Operacao" component={Operacao} options={{ headerShown: false }} />
+        <Stack.Screen name="Final" component={Final} options={{ headerShown: false }} />
 
 
       </Stack.Navigator>
