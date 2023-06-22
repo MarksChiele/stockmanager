@@ -63,7 +63,7 @@ const css = StyleSheet.create({
         justifyContent: 'center',
         width: "40%",
         height: "10%",
-        top: "40%",
+        top: "80%",
     },
     
 
@@ -95,6 +95,7 @@ const css = StyleSheet.create({
         height: 60,
         padding: 15,
         textAlign: "center",
+        fontSize: 20,
     },
 
     textPrincipal: {
@@ -143,7 +144,7 @@ const css = StyleSheet.create({
     },
 
     containerAoitem: {
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         width: "100%",
         height: 50,
@@ -156,10 +157,17 @@ const css = StyleSheet.create({
         color: "#000000",
         fontSize: 20,
         fontWeight: "bold",
-        alignContent: 'center',
         textTransform: "uppercase",
     },
 
+    textitem:{
+        color: "#000000",
+        fontSize: 25,
+        fontWeight: "bold",
+        textTransform: "uppercase",
+        top:50,
+
+    },
 });
 
 export { css };

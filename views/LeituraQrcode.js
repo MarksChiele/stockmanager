@@ -48,7 +48,6 @@ let getOp=props.route.params.Opercao;
   if (hasPermission === false) {
     return <Text>Acesso à câmera negado.</Text>;
   }
-  console.log(getOp);
   return (
    
 
@@ -82,7 +81,7 @@ let getOp=props.route.params.Opercao;
           <Text style={styles.dataText}>O ID do produto lido é: {scannedData}</Text>
           <Text style={styles.dataText}>Nome: {productData.descricao}</Text>
       
-          <Button title="Escanear QR Code" onPress={startScan} />
+          <Button style={styles.button} title="Escanear QR Code" onPress={startScan} />
         </View>// scannedData e a variavel do conteudo do QRCode. Esta deve ser enviada junto na rota quando chamada a API
       )}
 
@@ -97,12 +96,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'white',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   dataContainer: {
     height: "80%",
     width: "100%",
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     margin:1,
     backgroundColor: 'white',
@@ -111,5 +110,10 @@ const styles = StyleSheet.create({
   dataText: {
     fontSize: 20,
     marginBottom: 10,
+  },
+
+  button:{
+    alignItems: 'center',
+    top:30,
   },
 });

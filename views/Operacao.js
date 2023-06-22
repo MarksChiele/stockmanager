@@ -1,13 +1,37 @@
 //https://www.nuvemshop.com.br/ferramentas/gerador-qrcode GERADOR DE QRCODE
 import { Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 import { css } from '../assets/Css/Css';
-import React, { useState } from 'react';
+import React, { useState,useEffect  } from 'react';
 import { api } from '../services/api';
 
 export default function Operacao(props) {
-    
     const [quantidade, setQuantidade] = useState('');
-    let getItem=props.route.params.idItem;
+    const [data, setData] = useState(null);
+   
+    let getItem = props.route.params.idItem;
+
+
+     useEffect(() => {
+        api.get('produto/'+getItem)
+          .then(response => {
+            setData(response.data);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }, []);
+    
+  
+ // const  reponse = await api.get("produto/" + getItem);
+ // setProductData(reponse.data)
+  //console.log("sucessoo.",productData.descricao)
+ //  } catch {
+  // console.log("Erro ao buscar o produto.",productData.descricao)
+//}
+
+
+
+
 
     function capturaOp() {
         var operacao = props.route.params.Op;
@@ -24,6 +48,9 @@ export default function Operacao(props) {
         }
     }
 
+    
+
+
 
     async function realizaOperacao() {
         var operacao = props.route.params.Op; // variavel para direcionar a operacao correta na API soma ou subt
@@ -36,8 +63,8 @@ export default function Operacao(props) {
         });
 
         if (reponse.data.success) {
-            props.navigation.navigate('Final',{
-                item:getItem,// leva o id do item para montar a quantidade em estoque na tela de sucesso.
+            props.navigation.navigate('Final', {
+                item: getItem,// leva o id do item para montar a quantidade em estoque na tela de sucesso.
 
             })
         }
@@ -66,9 +93,12 @@ export default function Operacao(props) {
                 onChangeText={(quantidade) => setQuantidade(quantidade)}
                 placeholder="Informe aqui a quantidade!"
                 placeholderTextColor={'black'}
+
             />
             <View style={css.containerAoitem}>
-                <Text style={css.textAoitem}  >Ao item </Text>
+        
+                <Text style={css.textAoitem}>Ao item:</Text>
+                <Text style={css.textitem}>{data ? data.descricao : 'Ao item...'} </Text>
             </View>
 
             <TouchableOpacity style={css.botaoAtualizar} onPress={realizaOperacao} >
